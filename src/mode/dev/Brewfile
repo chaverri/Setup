@@ -38,4 +38,5 @@ cask "iterm2"
 cask "intellij-idea"
 cask "datagrip"
 cask "docker"
+cask "postman"
 mas "Slack", id: 803453959
