@@ -29,6 +29,7 @@
   - [Customizable Setup](#customizable-setup)
     - [Manual](#manual)
   - [Useful Commands](#useful-commands)
+  - [Install homebrew for each user](#install-homebrew-for-each-user)
   - [Contribute](#contribute)
 
 ## Automate Mac Setup
@@ -157,6 +158,60 @@ mas list | sort -fk 2
 
 # Create Brewfile
 brew bundle dump
+
+# Create custom java symlink
+ sudo ln -sfn ~/homebrew/opt/openjdk/libexec/openjdk.jdk \
+     /Library/Java/JavaVirtualMachines/openjdk.jdk
+```
+
+## Install homebrew for each user
+
+According to the brew documentation you can install it inside each User Home folder
+
+That way all packages are going to stay inside your user folder, and will not be visible or affect other users. As a good side effect if you delete that user, no trash is left behind on your system. So system wide pollution is minimised.
+
+This comes at the cost of more storage being used, if you install the same package for multiple users. Just something to be aware if you have a very small SSD.
+
+Instructions
+If you currently have brew installed on your system globally, I recommend uninstalling brew first. (You can see where brew is installed running `which brew`)
+
+If you don't have Command Line Tools installed, you have to run this first:
+
+`xcode-select --install`
+
+Open terminal and Run:
+
+MacOS Catalina 10.15 or newer:
+```bash
+cd $HOME
+mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+echo 'export PATH="$HOME/homebrew/bin:$PATH"' >> .zprofile
+```
+
+MacOS Mojave 10.14 or older:
+```bash
+cd $HOME
+mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+echo 'export PATH="$HOME/homebrew/bin:$PATH"' >> .bash_profile
+```
+
+Close the Terminal window
+
+Open Terminal again, and run this to ensure your installation is correct:
+
+`brew doctor`
+
+Done!
+
+**Disabling auto update**
+
+This is not required I also find useful to disable brew to update all packages before every time you install something.
+
+MacOS Catalina 10.15 or newer
+```bash
+echo 'HOMEBREW_NO_AUTO_UPDATE=1' >> $HOME/.zprofile
+MacOS Mojave 10.14 or older
+echo 'HOMEBREW_NO_AUTO_UPDATE=1' >> $HOME/.bash_profile
 ```
 
 ## Contribute
