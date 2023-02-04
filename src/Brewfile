@@ -8,6 +8,3 @@ tap "homebrew/services"
 brew "jq"
 brew "mas"
 brew "wget"
-cask "fetch"
-cask "1password"
-mas "Slack", id: 803453959

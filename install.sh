@@ -19,8 +19,8 @@ header
 
 #-----------------------------------------------------------------------------------------------
 # SYSTEM SETUP
-section "Homebrew"
-installHomebrew
+# section "Homebrew"
+# installHomebrew
 
 #-----------------------------------------------------------------------------------------------
 # MAIN INSTALL (DEFAULT)
